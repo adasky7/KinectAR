@@ -1,0 +1,51 @@
+﻿<Window x:Class="KinectAR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
+        xmlns:local="clr-namespace:KinectAR"
+        mc:Ignorable="d"
+        Title="AR Data collection" Height="700" Width="1467.2">
+
+
+    <DockPanel LastChildFill="False" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch">
+        <Grid Background="GhostWhite">
+            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="585" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
+                <Grid>
+                    <controls:KinectViewer x:Name="viewer" />
+                    <Viewbox Margin="0" Width="753" Height="563">
+
+                        <Canvas Height="1080" Width="1920">
+                            <controls:KinectAngle x:Name="AngleLeftElbow" Opacity="0.5" Fill="Green" />
+                            <controls:KinectAngle x:Name="AngleLeftShoulder" Opacity="0.5" Fill="Blue" />
+                            <controls:KinectAngle x:Name="AngleRightElbow" Opacity="0.5" Fill="Pink" />
+                            <controls:KinectAngle x:Name="AngleRightShoulder" Opacity="0.5" Fill="Purple" />
+                            <controls:KinectAngle x:Name="AngleLeftWrist" Opacity="0.5" Fill="SkyBlue" />
+                            <controls:KinectAngle x:Name="AngleRightWrist" Opacity="0.5" Fill="SkyBlue" />
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Border>
+            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="10,600,0,0" VerticalAlignment="Top" Width="774" Background="#FFF6E3E4">
+                <DockPanel>
+                    <Label x:Name="label" Content="Kinect Indicator" Margin="15,0,0,0" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <Ellipse x:Name="Indicator_kinect" Fill="Red" Height="25" Stroke="Green" VerticalAlignment="Center" Width="25" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <Button x:Name="button1" Content="Stop rec" Height="33" VerticalAlignment="Center" Width="75" DockPanel.Dock="Right" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" Margin="0,0,50,0" Background="#FFD02C2C" Click="Stop_record"/>
+                    <Button x:Name="button" Content="Data rec" Height="33" VerticalAlignment="Center" Width="75" Margin="0,0,50,0" FontWeight="Bold" FontSize="14" Background="#FF446EE5" HorizontalAlignment="Right" DockPanel.Dock="Right" Click="Start_data_rec"/>
+                    <TextBlock x:Name="FrameCount" TextWrapping="Wrap" Text="Frame count:" Width="88" Margin="10,8,0,10.4" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="FrameCountValue" Height="17" TextWrapping="Wrap" Text="{Binding TotalFrameCount, Mode=OneWay, FallbackValue=0}" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Width="47" HorizontalAlignment="Left" Margin="5,10,0,11.4" Background="White"/>
+                    <TextBlock x:Name="FPS" TextWrapping="Wrap" Text="FPS:" Width="31" Margin="60,9,0,11.4" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="FPSValue" Height="17" TextWrapping="Wrap" Text="{Binding Fps, Mode=OneWay, FallbackValue=0}" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Width="47" HorizontalAlignment="Left" Margin="5,10,0,11.4" Background="White"/>
+
+                </DockPanel>
+            </Border>
+            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="585" Margin="789,10,0,0" VerticalAlignment="Top" Width="662">
+                <Grid>
+                    <controls:KinectViewer x:Name="depthviewer" />
+                    <Viewbox HorizontalAlignment="Left" Height="564" Margin="10,10,0,0" VerticalAlignment="Top" Width="641"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
